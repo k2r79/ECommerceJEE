@@ -15,17 +15,23 @@ public class Client extends HibernateSessionUtil
     @Column(name="ID")
     @GeneratedValue
     private long id;
+
     @Column(name="PSEUDO")
     private String pseudo;
+
     @Column(name="EMAIL")
     private String email;
+
     @Column(name="NOM")
     private String nom;
+
     @Column(name="PRENOM")
     private String prenom;
+
     @Column(name="DATEDENAISSANCE")
     @Temporal(TemporalType.DATE)
     private Date dateDeNaissance;
+
     private BigInteger refcivilite;
 
     // REFCIVILITE

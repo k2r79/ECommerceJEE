@@ -5,7 +5,7 @@
 	<h1>Liste des clients</h1>
     <ul>
         <c:forEach var="client" items="${clients}">
-            <li>${client}</li>
+            <li>${client.prenom} ${client.nom} <${client.email}></li>
         </c:forEach>
     </ul>
 </body>
