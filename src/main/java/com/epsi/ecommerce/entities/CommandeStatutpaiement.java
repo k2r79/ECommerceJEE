@@ -1,103 +1,68 @@
 package com.epsi.ecommerce.entities;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "COMMANDE_STATUTPAIEMENT", schema = "ECOMMERCE", catalog = "")
-@IdClass(CommandeStatutpaiementPK.class)
-public class CommandeStatutpaiement
+@Table(name = "COMMANDE_STATUTPAIEMENT")
+@AssociationOverrides({
+    @AssociationOverride(name = "pk.commande", joinColumns = @JoinColumn(name = "REFCOMMANDE")),
+    @AssociationOverride(name = "pk.statutPaiement", joinColumns = @JoinColumn(name = "REFSTATUTPAIEMENT")) })
+public class CommandeStatutPaiement
 {
-    private int refcommande;
-    private BigInteger refstatutpaiement;
-    private Timestamp date;
-    private String finpaiement;
-
-    @Id
-    @Column(name = "REFCOMMANDE")
-    public int getRefcommande()
-    {
-        return refcommande;
-    }
-
-    public void setRefcommande(int refcommande)
-    {
-        this.refcommande = refcommande;
-    }
-
-    @Id
-    @Column(name = "REFSTATUTPAIEMENT")
-    public BigInteger getRefstatutpaiement()
-    {
-        return refstatutpaiement;
-    }
-
-    public void setRefstatutpaiement(BigInteger refstatutpaiement)
-    {
-        this.refstatutpaiement = refstatutpaiement;
-    }
+    @EmbeddedId
+    private CommandeStatutPaiementPK pk = new CommandeStatutPaiementPK();
 
     @Basic
-    @Column(name = "date")
+    @Column(name = "\"date\"")
+    private Timestamp date;
+
+    @Basic
+    @Column(name = "FINPAIEMENT")
+    private String finPaiement;
+
+    public CommandeStatutPaiementPK getPk()
+    {
+        return pk;
+    }
+    public void setPk(CommandeStatutPaiementPK pk)
+    {
+        this.pk = pk;
+    }
+
     public Timestamp getDate()
     {
         return date;
     }
-
     public void setDate(Timestamp date)
     {
         this.date = date;
     }
 
-    @Basic
-    @Column(name = "FINPAIEMENT")
-    public String getFinpaiement()
+    public String getFinPaiement()
     {
-        return finpaiement;
+        return finPaiement;
+    }
+    public void setFinPaiement(String finPaiement)
+    {
+        this.finPaiement = finPaiement;
     }
 
-    public void setFinpaiement(String finpaiement)
+    public Commande getCommande()
     {
-        this.finpaiement = finpaiement;
+        return pk.getCommande();
+    }
+    public void setCommande(Commande commande)
+    {
+        pk.setCommande(commande);
     }
 
-    @Override
-    public boolean equals(Object o)
+    public StatutPaiement getStatutPaiement()
     {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        CommandeStatutpaiement that = (CommandeStatutpaiement) o;
-
-        if (refcommande != that.refcommande) {
-            return false;
-        }
-        if (date != null ? !date.equals(that.date) : that.date != null) {
-            return false;
-        }
-        if (finpaiement != null ? !finpaiement.equals(that.finpaiement) : that.finpaiement != null) {
-            return false;
-        }
-        if (refstatutpaiement != null ? !refstatutpaiement.equals(that.refstatutpaiement) : that.refstatutpaiement !=
-                null) {
-            return false;
-        }
-
-        return true;
+        return pk.getStatutPaiement();
     }
-
-    @Override
-    public int hashCode()
+    public void setStatutPaiement(StatutPaiement statutPaiement)
     {
-        int result = refcommande;
-        result = 31 * result + (refstatutpaiement != null ? refstatutpaiement.hashCode() : 0);
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + (finpaiement != null ? finpaiement.hashCode() : 0);
-        return result;
+        pk.setStatutPaiement(statutPaiement);
     }
 }

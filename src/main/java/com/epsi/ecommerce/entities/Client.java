@@ -4,6 +4,7 @@ import com.epsi.ecommerce.utils.HibernateSessionUtil;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="CLIENT")
@@ -33,6 +34,9 @@ public class Client extends HibernateSessionUtil
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "REFCIVILITE")
     private Civilite civilite;
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private List<Commande> commandes;
 
     public long getId()
     {
@@ -95,5 +99,19 @@ public class Client extends HibernateSessionUtil
     public void setCivilite(Civilite civilite)
     {
         this.civilite = civilite;
+    }
+
+    public List<Commande> getCommandes()
+    {
+        return commandes;
+    }
+    public void setCommandes(List<Commande> commandes)
+    {
+        this.commandes = commandes;
+    }
+
+    public String getNomComplet()
+    {
+        return prenom + " " + nom;
     }
 }

@@ -28,15 +28,15 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
                 <value>com.epsi.ecommerce.entities.CommandefournisseurProduit</value>
                 <value>com.epsi.ecommerce.entities.Commandeproduit</value>
                 <value>com.epsi.ecommerce.entities.CommandeStatutcommande</value>
-                <value>com.epsi.ecommerce.entities.CommandeStatutpaiement</value>
+                <value>com.epsi.ecommerce.entities.CommandeStatutPaiement</value>
                 <value>com.epsi.ecommerce.entities.Configuration</value>
                 <value>com.epsi.ecommerce.entities.Expediteur</value>
                 <value>com.epsi.ecommerce.entities.Fournisseur</value>
                 <value>com.epsi.ecommerce.entities.Monitoring</value>
-                <value>com.epsi.ecommerce.entities.Moyenpaiement</value>
+                <value>com.epsi.ecommerce.entities.MoyenPaiement</value>
                 <value>com.epsi.ecommerce.entities.Produit</value>
-                <value>com.epsi.ecommerce.entities.Statutcommande</value>
-                <value>com.epsi.ecommerce.entities.Statutpaiement</value>
+                <value>com.epsi.ecommerce.entities.StatutCommande</value>
+                <value>com.epsi.ecommerce.entities.StatutPaiement</value>
                 <value>com.epsi.ecommerce.entities.Tva</value>
             </list>
         </property>

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.math.BigInteger;
 
 @Entity
-public class Moyenpaiement
+public class MoyenPaiement
 {
     private BigInteger id;
     private String libelle;
@@ -46,7 +46,7 @@ public class Moyenpaiement
             return false;
         }
 
-        Moyenpaiement that = (Moyenpaiement) o;
+        MoyenPaiement that = (MoyenPaiement) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) {
             return false;
