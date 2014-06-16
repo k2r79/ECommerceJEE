@@ -1,11 +1,11 @@
 package com.epsi.ecommerce.dao;
 
-import com.epsi.ecommerce.commons.HibernateSessionUtils;
+import com.epsi.ecommerce.utils.HibernateSessionUtil;
 
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class AbstractDAO<T, PK extends Serializable> extends HibernateSessionUtils implements Persistable<T, PK>
+public abstract class AbstractDAO<T, PK extends Serializable> extends HibernateSessionUtil implements Persistable<T, PK>
 {
     private Class TClass;
 
