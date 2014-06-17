@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class AbstractDAO<T, PK extends Serializable> extends HibernateSessionUtil implements Persistable<T, PK>
 {
-    private Class TClass;
+    protected Class TClass;
 
     protected AbstractDAO(Class<T> TClass)
     {

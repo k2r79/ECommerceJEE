@@ -5,6 +5,9 @@
 
 <tiles:insertDefinition name="base.definition">
     <tiles:putAttribute name="title">E-Commerce | Commandes</tiles:putAttribute>
+    <tiles:putAttribute name="css">
+        <script src="<c:url value="../../resources/css/morrisjs/morris.css" />"></script>
+    </tiles:putAttribute>
     <tiles:putAttribute name="body">
         <h3>Liste des Commandes</h3>
         <br/>
@@ -50,5 +53,14 @@
                 </c:forEach>
             </tbody>
         </table>
+        <br/>
+        <h3>Graphique des Commandes</h3>
+        <br/>
+        <div id="graphique-commandes" style="height: 350px;"></div>
+    </tiles:putAttribute>
+    <tiles:putAttribute name="js">
+        <script src="<c:url value="../../resources/js/morrisjs/raphael-2.1.0.min.js" />"></script>
+        <script src="<c:url value="../../resources/js/morrisjs/morris.min.js" />"></script>
+        <script src="<c:url value="../../resources/js/commandes.js" />"></script>
     </tiles:putAttribute>
 </tiles:insertDefinition>

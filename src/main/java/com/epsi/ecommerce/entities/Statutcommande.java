@@ -1,9 +1,7 @@
 package com.epsi.ecommerce.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class StatutCommande
@@ -15,6 +13,9 @@ public class StatutCommande
     @Basic
     @Column(name = "LIBELLE")
     private String libelle;
+
+    @OneToMany(mappedBy = "pk.statutCommande", fetch = FetchType.LAZY)
+    private List<CommandeStatutCommande> commandeStatutCommandes;
 
     public int getId()
     {
@@ -32,5 +33,14 @@ public class StatutCommande
     public void setLibelle(String libelle)
     {
         this.libelle = libelle;
+    }
+
+    public List<CommandeStatutCommande> getCommandeStatutCommandes()
+    {
+        return commandeStatutCommandes;
+    }
+    public void setCommandeStatutCommandes(List<CommandeStatutCommande> commandeStatutCommandes)
+    {
+        this.commandeStatutCommandes = commandeStatutCommandes;
     }
 }

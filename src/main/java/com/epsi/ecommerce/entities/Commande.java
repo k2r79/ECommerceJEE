@@ -1,5 +1,8 @@
 package com.epsi.ecommerce.entities;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -44,8 +47,13 @@ public class Commande
     @JoinColumn(name = "REFADRESSEFACTURATION")
     private Adresse adresseFacturation;
 
-    @OneToMany(mappedBy = "pk.commande", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pk.commande")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<CommandeStatutPaiement> commandeStatutPaiements;
+
+    @OneToMany(mappedBy = "pk.commande", fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<CommandeStatutCommande> commandeStatutCommandes;
 
     @Basic
     @Column(name = "ANNULEE")
@@ -148,5 +156,14 @@ public class Commande
     public void setCommandeStatutPaiements(List<CommandeStatutPaiement> commandeStatutPaiements)
     {
         this.commandeStatutPaiements = commandeStatutPaiements;
+    }
+
+    public List<CommandeStatutCommande> getCommandeStatutCommandes()
+    {
+        return commandeStatutCommandes;
+    }
+    public void setCommandeStatutCommandes(List<CommandeStatutCommande> commandeStatutCommandes)
+    {
+        this.commandeStatutCommandes = commandeStatutCommandes;
     }
 }
